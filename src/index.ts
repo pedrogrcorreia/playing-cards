@@ -1,8 +1,8 @@
-import { Card } from './models/cards/Card';
-import { FaceValues } from './models/cards/face/FaceValues';
-import { FaceValue } from './models/cards/face/FaceValue';
-import { SuitValues } from './models/cards/suits/SuitValues';
-import { Suit } from './models/cards/suits/Suits';
-import { FiftyTwoDeck, FortyDeck } from './models/deck/Deck';
-import { MultipleDeck } from './models/deck/MultipleDeck';
-import { DeckType } from './models/deck/DeckType';
+export { FullDeck, FiftyTwoDeck, FortyDeck } from './models/deck/Deck';
+export { MultipleDeck } from './models/deck/MultipleDeck';
+export { DeckType } from './models/deck/DeckType';
+export { Card } from './models/cards/Card';
+export { SuitValues } from './models/cards/suits/SuitValues';
+export { Suit } from './models/cards/suits/Suits';
+export { FaceValue } from './models/cards/face/FaceValue';
+export { FaceValues } from './models/cards/face/FaceValues';
