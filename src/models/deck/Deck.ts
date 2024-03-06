@@ -4,11 +4,17 @@ import { FaceValue } from '../cards/face/FaceValue';
 import { SuitValues } from '../cards/suits/SuitValues';
 import { Suit } from '../cards/suits/Suits';
 import { shuffleCards } from '../../utils/Utils';
+import { Stack } from './Stack';
 
 export abstract class Deck {
   protected _cards: Card[] = [];
   public get cards(): Card[] {
     return this._cards;
+  }
+
+  protected _stack: Stack = new Stack();
+  public get stack(): Stack {
+    return this._stack;
   }
 
   constructor() {
@@ -34,12 +40,28 @@ export abstract class Deck {
     shuffleCards(this.cards);
   }
 
-  public removeFromEnd(): Card | undefined {
-    return this.cards.pop();
+  public removeCard(): Card | undefined {
+    let card = this.cards.pop();
+    if (card) {
+      this._stack.addCard(card);
+    }
+    return card;
   }
 
-  public removeFromBegin(): Card | undefined {
-    return this.cards.shift();
+  public removeCardFromBegin(): Card | undefined {
+    let card = this.cards.shift();
+    if (card) {
+      this._stack.addCard(card);
+    }
+    return card;
+  }
+
+  public addCard(card: Card): number {
+    return this.cards.push(card);
+  }
+
+  public addCardToBegin(card: Card): number {
+    return this.cards.unshift(card);
   }
 }
 
