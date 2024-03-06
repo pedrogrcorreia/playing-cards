@@ -1,17 +1,37 @@
 {
-  "name": "playing-cards",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "ts-playing-cards",
+  "version": "1.0.1",
+  "description": "A simple module to create card games.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+      "dist"
+   ],
   "scripts": {
+    "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/index.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "playing cards",
+    "cards",
+    "games",
+    "game"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrogrcorreia/playing-cards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pedrogrcorreia/playing-cards/issues"
+  },
+  "homepage": "https://github.com/pedrogrcorreia/playing-cards#readme",
+  "author": "Pedro Correia",
   "license": "ISC",
   "devDependencies": {
     "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   }
 }
