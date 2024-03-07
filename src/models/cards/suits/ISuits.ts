@@ -1,6 +1,6 @@
 export interface ISuits {
-  suitValue: number;
-  suitName: string;
+  value: number;
+  name: string;
   isRed?: boolean;
   isBlack?: boolean;
 }

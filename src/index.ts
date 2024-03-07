@@ -6,3 +6,4 @@ export { SuitValues } from './models/cards/suits/SuitValues';
 export { Suit } from './models/cards/suits/Suits';
 export { FaceValue } from './models/cards/face/FaceValue';
 export { FaceValues } from './models/cards/face/FaceValues';
+export { Rank } from './models/cards/Rank';

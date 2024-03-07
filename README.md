@@ -11,9 +11,11 @@ A simple module to create card games using TypeScript!
 - Card
 
   - [x] Create cards based on `Suit` and `FaceValue`
-    - `new Card(Suit, FaceValue)`
+    - `new Card(new Suit(SuitValues), new FaceValue(FaceValues))`
   - [x] Compare color cards
-  - [ ] Compare face values - _in progress_
+    - `card.suit.isRed || card.suit.isBlack`
+  - [x] Compare face values
+    - `card.compare(Card)` ⇒ returns `Rank.LOWER, Rank.EQUAL, Rank.HIGHER`
 
 - Deck
 
