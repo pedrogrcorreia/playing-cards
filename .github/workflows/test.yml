@@ -24,3 +24,6 @@ jobs:
           hide-comment: false
           create-new-comment: false
           hide-summary: false
+          junitxml-title: Playing Cards Test Report
+          junitxml-path: ./coverage/jest_report.xml
+          coverage-title: Coverage

@@ -11,11 +11,10 @@ module.exports = {
   reporters: [
     'default',
     [
-      './node_modules/jest-html-reporter',
+      'jest-junit',
       {
-        pageTitle: 'Test Report',
-        outputPath: 'coverage/unit-test-report.html',
-        includeFailureMsg: true,
+        outputDirectory: 'coverage',
+        outputName: 'jest_report.xml',
       },
     ],
   ],
