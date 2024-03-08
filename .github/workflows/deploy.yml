@@ -15,3 +15,5 @@ jobs:
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
+      - name: Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@v1.0.25

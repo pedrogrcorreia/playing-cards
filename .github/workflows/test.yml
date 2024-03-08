@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - '*'
+      - '!integration'
+
+jobs:
+  testing:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm test
+      - name: Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@v1.0.25
+        with:
+          coverage-summary-path: ./coverage/coverage-final.json
+          title: Playing Cards Test Report
+          summary-title: Test Report
+          badge-title: Coverage
+          hide-comment: false
+          create-new-comment: false
+          hide-summary: false
