@@ -11,11 +11,10 @@ module.exports = {
   reporters: [
     'default',
     [
-      './node_modules/jest-html-reporter',
+      'jest-junit',
       {
-        pageTitle: 'Test Report',
-        outputPath: 'coverage/unit-test-report.html',
-        includeFailureMsg: true,
+        outputDirectory: 'coverage',
+        outputName: 'jest_report.xml',
       },
     ],
   ],
@@ -23,7 +22,7 @@ module.exports = {
   collectCoverageFrom: ['./src/**/*.ts'],
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: ['<rootDir>/node_modules', './src/index.ts'],
-  coverageReporters: ['json', 'lcov', 'text'],
+  coverageReporters: ['json', 'json-summary', 'lcov', 'text', 'text-summary'],
   coverageThreshold: {
     global: {
       branches: 60,
