@@ -1,41 +1,48 @@
-# Playing Cards
+# ts-playing-cards
 
-A simple module to create card games using TypeScript!
+A simple package that enables the creation of playing <br>cards and decks, to help you create card games!
 
 ## Install
 
-`npm install ts-playing-cards`
+`npm install ts-playing-cards@latest`
 
 ## Features
 
-- Card
+### - Card
 
-  - [x] Create cards based on `Suit` and `FaceValue`
-    - `new Card(new Suit(SuitValues), new FaceValue(FaceValues))`
-  - [x] Compare color cards
-    - `card.suit.isRed || card.suit.isBlack`
-  - [x] Compare face values
-    - `card.compare(Card)` ⇒ returns `Rank.LOWER, Rank.EQUAL, Rank.HIGHER`
+- Create cards based on `Suit` and `FaceValue`
+  - `new Card(new Suit(SuitValues), new FaceValue(FaceValues))`
+- Compare color cards
+  - `card.suit.isRed` or `card.suit.isBlack`
+- Compare face values
+  - `card.compare(Card)` ⇒ returns `Rank.LOWER, Rank.EQUAL, Rank.HIGHER`
 
-- Deck
+### - Deck
 
-  - [x] Create deck of different types
-    - [x] Full Deck of 56 cards
-      - `new FullDeck()`
-    - [x] Deck without Joker cards (52 cards)
-      - `new FiftyTwoDeck()`
-    - [x] Deck without Joker and 8-10 cards (40 cards)
-      - `new FortyDeck()`
-  - [x] Multiple size decks
-    - [x] Create `n` decks of different types based on `DeckType`
-      - `new MultipleDeck(n, DeckType)`
-  - [x] Shuffle cards
-  - [x] Remove cards from end and beginning of deck
-  - [x] Add cards to deck
-  - [x] Access to stack of removed cards
-  - [x] Remove cards from stack
-  - [x] Check remaining cards
-  - [x] Check empty decks
+- Create deck of different types
+  - Full Deck of 56 cards
+    - `new FullDeck()`
+  - Deck without Joker cards (52 cards)
+    - `new FiftyTwoDeck()`
+  - Deck without Joker and 8-10 cards (40 cards)
+    - `new FortyDeck()`
+- Multiple size decks
+  - Create `n` decks of different types based on `DeckType`
+    - `new MultipleDeck(n, DeckType)`
+- Shuffle cards
+  - `deck.shuffle()`
+- Remove cards from end and beginning of deck
+  - `deck.removeCard()` or `deck.removeCardFromBegin()`
+- Add cards to deck
+  - `deck.addCard(Card)`
+- Access to stack of removed cards
+  - `deck.stack`
+- Remove cards from stack
+  - `deck.stack.removeCard()` or `deck.stack.removeCardFromBegin()`
+- Check remaining cards
+  - `deck.remainingCards()`
+- Check empty decks
+  - `deck.isEmpty()`
 
 # Like the project?
 
