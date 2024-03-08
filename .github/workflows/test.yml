@@ -15,17 +15,10 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm run test-report
-      - name: Jest Coverage Comment
-        uses: MishaKav/jest-coverage-comment@v1.0.25
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v4
+        if: success() || failure()
         with:
-          coverage-summary-path: ./coverage/coverage-final.json
-          title: Playing Cards Test Report
-          summary-title: Test Report
-          badge-title: Coverage
-          hide-comment: false
-          create-new-comment: false
-          hide-summary: false
-          junitxml-title: Playing Cards Test Report
-          junitxml-path: ./coverage/jest_report.xml
-          coverage-title: Coverage
-          coverage-path: ./coverage.txt
+          report_paths: './coverage/*.xml'
+          include_passed: true
+          detailed_summary: true
