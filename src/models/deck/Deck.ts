@@ -21,7 +21,6 @@ export abstract class Deck {
     const suits = Object.values(SuitValues).filter((key) => isNaN(Number(key)));
     const faceValues = Object.values(FaceValues).filter((key) => isNaN(Number(key)));
 
-    console.log(suits.indexOf(SuitValues[0]));
     for (let i = 0; i < suits.length; i++) {
       for (let j = 0; j < faceValues.length; j++) {
         const card = new Card(new Suit(suits.indexOf(SuitValues[i])), new FaceValue(faceValues.indexOf(FaceValues[j])));
@@ -60,6 +59,14 @@ export abstract class Deck {
 
   public addCardToBegin(card: Card): number {
     return this.cards.unshift(card);
+  }
+
+  public isEmpty(): boolean {
+    return this.cards.length == 0;
+  }
+
+  public remainingCards(): number {
+    return this.cards.length;
   }
 }
 
