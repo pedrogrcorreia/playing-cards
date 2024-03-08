@@ -15,10 +15,17 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm run test-report
-      - name: Publish Test Report
-        uses: mikepenz/action-junit-report@v4
-        if: success() || failure()
+      - name: Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@v1.0.25
         with:
-          report_paths: './coverage/*.xml'
-          include_passed: true
-          detailed_summary: true
+          coverage-summary-path: ./coverage/coverage-summary.json
+          title: Coverage Summary
+          summary-title: Test Report
+          badge-title: Coverage
+          hide-comment: false
+          create-new-comment: false
+          hide-summary: false
+          junitxml-title: Test Report
+          junitxml-path: ./coverage/jest_report.xml
+          coverage-title: Coverage Details
+          coverage-path: ./coverage.txt

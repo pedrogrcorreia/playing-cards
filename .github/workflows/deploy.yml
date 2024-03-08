@@ -11,9 +11,21 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm test
+      - run: npm test-report
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
       - name: Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@v1.0.25
+        with:
+          coverage-summary-path: ./coverage/coverage-summary.json
+          title: Coverage Summary
+          summary-title: Test Report
+          badge-title: Coverage
+          hide-comment: false
+          create-new-comment: false
+          hide-summary: false
+          junitxml-title: Test Report
+          junitxml-path: ./coverage/jest_report.xml
+          coverage-title: Coverage Details
+          coverage-path: ./coverage.txt
