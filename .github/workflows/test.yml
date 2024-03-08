@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm test-report
+      - run: npm run test-report
       - name: Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@v1.0.25
         with:
