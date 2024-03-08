@@ -34,6 +34,8 @@ A simple module to create card games using TypeScript!
   - [x] Add cards to deck
   - [x] Access to stack of removed cards
   - [x] Remove cards from stack
+  - [x] Check remaining cards
+  - [x] Check empty decks
 
 # Like the project?
 
@@ -44,3 +46,5 @@ A simple module to create card games using TypeScript!
 <a href='https://ko-fi.com/E1E757D6Z' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 </p>
 <br>
+
+#### Whole project is unit tested 100% using jest
