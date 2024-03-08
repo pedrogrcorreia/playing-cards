@@ -1,5 +1,5 @@
-import { FaceValue } from '../../../models/cards/face/FaceValue';
-import { FaceValues } from '../../../models/cards/face/FaceValues';
+import { FaceValue } from '../../../../models/cards/face/FaceValue';
+import { FaceValues } from '../../../../models/cards/face/FaceValues';
 
 describe('Test Face values', () => {
   describe('Create different FaceValues', () => {

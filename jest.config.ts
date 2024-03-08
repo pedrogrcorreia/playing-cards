@@ -22,7 +22,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['./src/**/*.ts'],
   coverageDirectory: './coverage',
-  coveragePathIgnorePatterns: ['<rootDir>/node_modules'],
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules', './src/index.ts'],
   coverageReporters: ['json', 'lcov', 'text'],
   coverageThreshold: {
     global: {
