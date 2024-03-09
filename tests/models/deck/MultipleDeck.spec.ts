@@ -1,5 +1,5 @@
-import { DeckType } from '../../../models/deck/DeckType';
-import { MultipleDeck } from '../../../models/deck/MultipleDeck';
+import { DeckType } from '../../../src/models/deck/DeckType';
+import { MultipleDeck } from '../../../src/models/deck/MultipleDeck';
 
 describe('Test Multiple Deck', () => {
   test('create Multiple FullDeck', () => {

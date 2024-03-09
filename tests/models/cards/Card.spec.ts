@@ -1,9 +1,9 @@
-import { Card } from '../../../models/cards/Card';
-import { Rank } from '../../../models/cards/Rank';
-import { FaceValue } from '../../../models/cards/face/FaceValue';
-import { FaceValues } from '../../../models/cards/face/FaceValues';
-import { SuitValues } from '../../../models/cards/suits/SuitValues';
-import { Suit } from '../../../models/cards/suits/Suits';
+import { Card } from '../../../src/models/cards/Card';
+import { Rank } from '../../../src/models/cards/Rank';
+import { FaceValue } from '../../../src/models/cards/face/FaceValue';
+import { FaceValues } from '../../../src/models/cards/face/FaceValues';
+import { SuitValues } from '../../../src/models/cards/suits/SuitValues';
+import { Suit } from '../../../src/models/cards/suits/Suits';
 
 const card = new Card(new Suit(SuitValues.CLUBS), new FaceValue(FaceValues.ACE));
 

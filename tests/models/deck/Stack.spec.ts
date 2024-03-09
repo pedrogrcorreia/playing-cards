@@ -3,7 +3,6 @@ import { FaceValue } from '../../../src/models/cards/face/FaceValue';
 import { FaceValues } from '../../../src/models/cards/face/FaceValues';
 import { SuitValues } from '../../../src/models/cards/suits/SuitValues';
 import { Suit } from '../../../src/models/cards/suits/Suits';
-import { FullDeck } from '../../../src/models/deck/Deck';
 import { Stack } from '../../../src/models/deck/Stack';
 
 let stack = new Stack();

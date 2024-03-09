@@ -1,5 +1,5 @@
-import { SuitValues } from '../../../../models/cards/suits/SuitValues';
-import { Suit } from '../../../../models/cards/suits/Suits';
+import { SuitValues } from '../../../../src/models/cards/suits/SuitValues';
+import { Suit } from '../../../../src/models/cards/suits/Suits';
 
 describe('Test Suits', () => {
   describe('Create different suits', () => {

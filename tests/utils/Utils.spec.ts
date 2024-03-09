@@ -1,5 +1,5 @@
-import { FullDeck } from '../../models/deck/Deck';
-import { shuffleCards } from '../../utils/Utils';
+import { FullDeck } from '../../src/models/deck/Deck';
+import { shuffleCards } from '../../src/utils/Utils';
 
 describe('Test Utils', () => {
   test('shuffleCards', () => {

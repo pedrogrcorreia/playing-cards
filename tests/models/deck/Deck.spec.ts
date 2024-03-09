@@ -11,7 +11,7 @@ let fiftyTwoDeck = new FiftyTwoDeck();
 let fortyDeck = new FortyDeck();
 let card = new Card(new Suit(SuitValues.CLUBS), new FaceValue(FaceValues.ACE));
 
-jest.mock('../../../utils/Utils', () => {
+jest.mock('../../../src/utils/Utils', () => {
   return {
     shuffleCards: jest.fn(),
   };
