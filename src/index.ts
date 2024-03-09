@@ -1,4 +1,4 @@
-export { FullDeck, FiftyTwoDeck, FortyDeck } from './models/deck/Deck';
+export { Deck, FullDeck, FiftyTwoDeck, FortyDeck } from './models/deck/Deck';
 export { MultipleDeck } from './models/deck/MultipleDeck';
 export { DeckType } from './models/deck/DeckType';
 export { Card } from './models/cards/Card';
