@@ -1,10 +1,10 @@
-import { Card } from '../../../models/cards/Card';
-import { FaceValue } from '../../../models/cards/face/FaceValue';
-import { FaceValues } from '../../../models/cards/face/FaceValues';
-import { SuitValues } from '../../../models/cards/suits/SuitValues';
-import { Suit } from '../../../models/cards/suits/Suits';
-import { FiftyTwoDeck, FortyDeck, FullDeck } from '../../../models/deck/Deck';
-import { shuffleCards } from '../../../utils/Utils';
+import { Card } from '../../../src/models/cards/Card';
+import { FaceValue } from '../../../src/models/cards/face/FaceValue';
+import { FaceValues } from '../../../src/models/cards/face/FaceValues';
+import { SuitValues } from '../../../src/models/cards/suits/SuitValues';
+import { Suit } from '../../../src/models/cards/suits/Suits';
+import { FiftyTwoDeck, FortyDeck, FullDeck } from '../../../src/models/deck/Deck';
+import { shuffleCards } from '../../../src/utils/Utils';
 
 let fullDeck = new FullDeck();
 let fiftyTwoDeck = new FiftyTwoDeck();
