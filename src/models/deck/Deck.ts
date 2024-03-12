@@ -1,92 +1,56 @@
 import { Card } from '../cards/Card';
 import { FaceValues } from '../cards/face/FaceValues';
-import { FaceValue } from '../cards/face/FaceValue';
 import { SuitValues } from '../cards/suits/SuitValues';
-import { Suit } from '../cards/suits/Suits';
-import { shuffleCards } from '../../utils/Utils';
-import { Stack } from './Stack';
+import { DeckType } from './DeckType';
+import { CardsCollection } from './CardsCollection';
 
-export abstract class Deck {
-  protected _cards: Card[] = [];
-  public get cards(): Card[] {
-    return this._cards;
+export class Deck extends CardsCollection {
+  constructor({
+    deckType = DeckType.STANDARD,
+    numberOfDecks = 1,
+    customCards = [],
+  }: { deckType?: DeckType; numberOfDecks?: number; customCards?: Card[] } = {}) {
+    super();
+    if (customCards.length > 0) {
+      this._cards.push(...customCards);
+    } else {
+      this.createSuitedCards();
+      switch (deckType) {
+        case DeckType.STANDARD_JOKERS:
+          this._cards.push(...this.createJokers());
+          break;
+        case DeckType.FORTY:
+          this.removeCardsForFortyDeck();
+          break;
+      }
+    }
+
+    this._cards = this._cards.concat(...Array(numberOfDecks - 1).fill(this._cards));
   }
 
-  protected _stack: Stack = new Stack();
-  public get stack(): Stack {
-    return this._stack;
-  }
-
-  constructor() {
+  private createSuitedCards() {
     const suits = Object.values(SuitValues).filter((key) => isNaN(Number(key)));
     const faceValues = Object.values(FaceValues).filter((key) => isNaN(Number(key)));
 
     for (let i = 0; i < suits.length; i++) {
       for (let j = 0; j < faceValues.length; j++) {
-        const card = new Card(new Suit(suits.indexOf(SuitValues[i])), new FaceValue(faceValues.indexOf(FaceValues[j])));
-        this.cards.push(card);
+        if (
+          suits.indexOf(SuitValues[i]) != SuitValues.NO_SUIT &&
+          faceValues.indexOf(FaceValues[j]) != FaceValues.JOKER
+        ) {
+          const card = new Card({ suitValue: suits.indexOf(suits[i]), faceValue: faceValues.indexOf(faceValues[j]) });
+          this._cards.push(card);
+        }
       }
     }
   }
 
-  public toString = (): string => {
-    return this.cards.join('\n');
-  };
-
-  public shuffle() {
-    shuffleCards(this.cards);
+  private createJokers() {
+    return Array.from(Array(2), () => new Card({ suitValue: SuitValues.NO_SUIT, faceValue: FaceValues.JOKER }));
   }
 
-  public removeCard(): Card | undefined {
-    let card = this.cards.pop();
-    if (card) {
-      this._stack.addCard(card);
-    }
-    return card;
-  }
-
-  public removeCardFromBegin(): Card | undefined {
-    let card = this.cards.shift();
-    if (card) {
-      this._stack.addCard(card);
-    }
-    return card;
-  }
-
-  public addCard(card: Card): number {
-    return this.cards.push(card);
-  }
-
-  public addCardToBegin(card: Card): number {
-    return this.cards.unshift(card);
-  }
-
-  public isEmpty(): boolean {
-    return this.cards.length == 0;
-  }
-
-  public remainingCards(): number {
-    return this.cards.length;
-  }
-}
-
-export class FullDeck extends Deck {
-  constructor() {
-    super();
-  }
-}
-
-export class FiftyTwoDeck extends Deck {
-  constructor() {
-    super();
-    this._cards = this.cards.filter((card) => !(card.faceValue.value == FaceValues.JOKER));
-  }
-}
-
-export class FortyDeck extends FiftyTwoDeck {
-  constructor() {
-    super();
+  private removeCardsForFortyDeck() {
     const valuesToRemove = [FaceValues.EIGHT, FaceValues.NINE, FaceValues.TEN];
-    this._cards = this.cards.filter((card) => !valuesToRemove.includes(card.faceValue.value));
+    this._cards = this.cards.filter((card) => !valuesToRemove.includes(card.face.value));
   }
 }

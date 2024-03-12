@@ -3,4 +3,5 @@ export enum SuitValues {
   SPADES,
   HEARTS,
   DIAMONDS,
+  NO_SUIT,
 }

@@ -1,6 +1,6 @@
 {
   "name": "ts-playing-cards",
-  "version": "1.2.6",
+  "version": "2.0.0",
   "description": "A simple module to create card games.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -11,7 +11,6 @@
   "scripts": {
     "build": "tsup",
     "test": "jest --coverage",
-    "test-report": "jest --coverage | tee ./coverage.txt && exit ${PIPESTATUS[0]}", 
     "dev": "ts-node src/index.ts"
   },
   "keywords": [

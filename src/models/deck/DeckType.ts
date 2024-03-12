@@ -1,5 +1,5 @@
 export enum DeckType {
-  FULL,
-  FIFTY_TWO,
+  STANDARD_JOKERS,
+  STANDARD,
   FORTY,
 }

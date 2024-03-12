@@ -10,25 +10,50 @@ A simple package that enables the creation of playing <br>cards and decks, to he
 
 ### - Card
 
-- Create cards based on `Suit` and `FaceValue`
-  - `new Card(new Suit(SuitValues), new FaceValue(FaceValues))`
+- Four suits + 1 no-suit
+  - `SuitValues.CLUBS`, `SuitValues.SPADES`, `SuitValues.HEARTS` and `SuitValues.DIAMONDS`
+  - Joker have `SuitValues.NO_SUIT`
+- Create cards
+  - Default constructor 'new Card()` returns ACE of CLUBS.
+  - Optional object constructor <br>
+  ```
+  new Card(
+    {
+      suit: SuitValues,
+      faceValue: FaceValues,
+    }
+  )
+  ```
 - Compare color cards
   - `card.suit.isRed` or `card.suit.isBlack`
 - Compare face values
   - `card.compare(Card)` ⇒ returns `Rank.LOWER, Rank.EQUAL, Rank.HIGHER`
 
-### - Deck
+### - Deck and Pile
 
-- Create deck of different types
+- Three deck types
+  - `DeckType.STANDARD` (52 cards), `DeckType.STANDARD_JOKERS` (54 cards) and `DeckType.FORTY` (40 cards).
+- Create decks
+  - Default constructor `new Deck()` returns a standard 52 cards deck
+  - Optional object constructor <br>
+  ```
+  new Deck(
+    {
+      deckType: DeckType,
+      numberOfDecks: number,
+      customCards: Card[],
+    }
+  )
+  ```
+  - `deckType` determines deck type
+  - `numberOfDecks` multiplies the number of cards in a deck by the specified number of decks amount
+  - `customCards` creates a deck with custom cards
   - Full Deck of 56 cards
     - `new FullDeck()`
   - Deck without Joker cards (52 cards)
     - `new FiftyTwoDeck()`
   - Deck without Joker and 8-10 cards (40 cards)
     - `new FortyDeck()`
-- Multiple size decks
-  - Create `n` decks of different types based on `DeckType`
-    - `new MultipleDeck(n, DeckType)`
 - Shuffle cards
   - `deck.shuffle()`
 - Remove cards from end and beginning of deck
@@ -43,6 +68,7 @@ A simple package that enables the creation of playing <br>cards and decks, to he
   - `deck.remainingCards()`
 - Check empty decks
   - `deck.isEmpty()`
+- `Pile` has the same methods as `Deck`, but it's created without cards.
 
 # Like the project?
 
