@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsup",
     "test": "jest --coverage",
-    "test-report": "jest --coverage | tee ./coverage.txt && exit ${PIPESTATUS[0]}", 
+    "test-report": "jest --coverage | tee coverage.txt && exit ${PIPESTATUS[0]}", 
     "dev": "ts-node src/index.ts"
   },
   "keywords": [
