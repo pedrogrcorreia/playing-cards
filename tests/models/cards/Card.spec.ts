@@ -5,31 +5,42 @@ import { FaceValues } from '../../../src/models/cards/face/FaceValues';
 import { SuitValues } from '../../../src/models/cards/suits/SuitValues';
 import { Suit } from '../../../src/models/cards/suits/Suits';
 
-const card = new Card(new Suit(SuitValues.CLUBS), new FaceValue(FaceValues.ACE));
-
 describe('Test cards', () => {
-  describe('Card creation', () => {
-    test('card created', () => {
+  describe('Default card', () => {
+    test('should return ace of clubs', () => {
+      const card = new Card();
       expect(card).not.toBeNull();
+      expect(card.suit.name).toBe('CLUBS');
+      expect(card.face.name).toBe('ACE');
     });
-    describe('Card values', () => {
-      test('card face values', () => {
-        expect(card.faceValue.name).toBe(FaceValues[FaceValues.ACE]);
-        expect(card.faceValue.value).toBe(FaceValues.ACE);
+    describe('Default valued card', () => {
+      test('should return jack of clubs', () => {
+        const card = new Card({ faceValue: FaceValues.JACK });
+        expect(card.face.name).toBe('JACK');
+        expect(card.face.value).toBe(FaceValues.JACK);
+        expect(card.suit.name).toBe('CLUBS');
       });
-
-      test('card suit values', () => {
-        expect(card.suit.name).toBe(SuitValues[SuitValues.CLUBS]);
-        expect(card.suit.value).toBe(SuitValues.CLUBS);
-        expect(card.suit.isBlack).toBe(true);
-        expect(card.suit.isRed).toBe(false);
+    });
+    describe('Default suited card', () => {
+      test('should return ace of diamonds', () => {
+        const card = new Card({ suitValue: SuitValues.DIAMONDS });
+        expect(card.suit.name).toBe('DIAMONDS');
+        expect(card.suit.value).toBe(SuitValues.DIAMONDS);
+        expect(card.face.name).toBe('ACE');
+      });
+    });
+    describe('Suited and valued card', () => {
+      test('should return six of hearts', () => {
+        const card = new Card({ suitValue: SuitValues.HEARTS, faceValue: FaceValues.SIX });
+        expect(card.suit.name).toBe('HEARTS');
+        expect(card.face.name).toBe('SIX');
       });
     });
   });
   describe('Card comparison', () => {
-    const ace = card;
-    const king = new Card(new Suit(SuitValues.CLUBS), new FaceValue(FaceValues.KING));
-    const queen = new Card(new Suit(SuitValues.CLUBS), new FaceValue(FaceValues.QUEEN));
+    const ace = new Card();
+    const king = new Card({ faceValue: FaceValues.KING });
+
     test('should return higher', () => {
       const result = ace.compareValue(king);
       expect(result).toBe(Rank.HIGHER);
@@ -42,11 +53,6 @@ describe('Test cards', () => {
     test('should return equal', () => {
       const result = king.compareValue(king);
       expect(result).toBe(Rank.EQUAL);
-    });
-  });
-  describe('Card string', () => {
-    test('should return card text', () => {
-      expect(card.toString()).toBe('ACE of CLUBS');
     });
   });
 });

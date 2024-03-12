@@ -4,7 +4,7 @@ import { Suit } from '../../../../src/models/cards/suits/Suits';
 describe('Test Suits', () => {
   describe('Create different suits', () => {
     test('Clubs', () => {
-      const suit = new Suit(SuitValues.CLUBS);
+      const suit = new Suit({ suit: SuitValues.CLUBS });
       expect(suit.value).toBe(0);
       expect(suit.name).toBe('CLUBS');
       expect(suit.isBlack).toBe(true);
@@ -12,7 +12,7 @@ describe('Test Suits', () => {
     });
 
     test('Spades', () => {
-      const suit = new Suit(SuitValues.SPADES);
+      const suit = new Suit({ suit: SuitValues.SPADES });
       expect(suit.value).toBe(1);
       expect(suit.name).toBe('SPADES');
       expect(suit.isBlack).toBe(true);
@@ -20,7 +20,7 @@ describe('Test Suits', () => {
     });
 
     test('Hearts', () => {
-      const suit = new Suit(SuitValues.HEARTS);
+      const suit = new Suit({ suit: SuitValues.HEARTS });
       expect(suit.value).toBe(2);
       expect(suit.name).toBe('HEARTS');
       expect(suit.isBlack).toBe(false);
@@ -28,7 +28,7 @@ describe('Test Suits', () => {
     });
 
     test('Diamonds', () => {
-      const suit = new Suit(SuitValues.DIAMONDS);
+      const suit = new Suit({ suit: SuitValues.DIAMONDS });
       expect(suit.value).toBe(3);
       expect(suit.name).toBe('DIAMONDS');
       expect(suit.isBlack).toBe(false);

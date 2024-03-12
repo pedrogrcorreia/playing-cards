@@ -1,28 +1,16 @@
 import { Card } from '../cards/Card';
 import { FaceValues } from '../cards/face/FaceValues';
-import { FaceValue } from '../cards/face/FaceValue';
 import { SuitValues } from '../cards/suits/SuitValues';
-import { Suit } from '../cards/suits/Suits';
-import { shuffleCards } from '../../utils/Utils';
-import { Stack } from './Stack';
 import { DeckType } from './DeckType';
+import { CardsCollection } from './CardsCollection';
 
-export class Deck {
-  protected _cards: Card[] = [];
-  public get cards(): Card[] {
-    return this._cards;
-  }
-
-  protected _stack: Stack = new Stack();
-  public get stack(): Stack {
-    return this._stack;
-  }
-
+export class Deck extends CardsCollection {
   constructor({
     deckType = DeckType.STANDARD,
-    numberOfDecks: numberOfDecks,
-    customCards: customCards = [],
+    numberOfDecks = 1,
+    customCards = [],
   }: { deckType?: DeckType; numberOfDecks?: number; customCards?: Card[] } = {}) {
+    super();
     if (customCards.length > 0) {
       this._cards.push(...customCards);
     } else {
@@ -37,9 +25,7 @@ export class Deck {
       }
     }
 
-    if (numberOfDecks != null) {
-      this._cards = this._cards.concat(...Array(numberOfDecks - 1).fill(this._cards));
-    }
+    this._cards = this._cards.concat(...Array(numberOfDecks - 1).fill(this._cards));
   }
 
   private createSuitedCards() {
@@ -52,10 +38,7 @@ export class Deck {
           suits.indexOf(SuitValues[i]) != SuitValues.NO_SUIT &&
           faceValues.indexOf(FaceValues[j]) != FaceValues.JOKER
         ) {
-          const card = new Card(
-            new Suit(suits.indexOf(SuitValues[i])),
-            new FaceValue(faceValues.indexOf(FaceValues[j]))
-          );
+          const card = new Card({ suitValue: suits.indexOf(suits[i]), faceValue: faceValues.indexOf(faceValues[j]) });
           this._cards.push(card);
         }
       }
@@ -63,51 +46,11 @@ export class Deck {
   }
 
   private createJokers() {
-    return Array.from(Array(2), () => new Card(new Suit(SuitValues.NO_SUIT), new FaceValue(FaceValues.JOKER)));
+    return Array.from(Array(2), () => new Card({ suitValue: SuitValues.NO_SUIT, faceValue: FaceValues.JOKER }));
   }
 
   private removeCardsForFortyDeck() {
     const valuesToRemove = [FaceValues.EIGHT, FaceValues.NINE, FaceValues.TEN];
-    this._cards = this._cards.filter((card) => !valuesToRemove.includes(card.faceValue.value));
-  }
-
-  public toString = (): string => {
-    return this.cards.join('\n');
-  };
-
-  public shuffle() {
-    shuffleCards(this.cards);
-  }
-
-  public removeCard(): Card | undefined {
-    let card = this.cards.pop();
-    if (card) {
-      this._stack.addCard(card);
-    }
-    return card;
-  }
-
-  public removeCardFromBegin(): Card | undefined {
-    let card = this.cards.shift();
-    if (card) {
-      this._stack.addCard(card);
-    }
-    return card;
-  }
-
-  public addCard(card: Card): number {
-    return this.cards.push(card);
-  }
-
-  public addCardToBegin(card: Card): number {
-    return this.cards.unshift(card);
-  }
-
-  public isEmpty(): boolean {
-    return this.cards.length == 0;
-  }
-
-  public remainingCards(): number {
-    return this.cards.length;
+    this._cards = this.cards.filter((card) => !valuesToRemove.includes(card.face.value));
   }
 }
