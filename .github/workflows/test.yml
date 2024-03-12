@@ -28,4 +28,4 @@ jobs:
           junitxml-title: Test Report
           junitxml-path: ./coverage/jest_report.xml
           coverage-title: Coverage Details
-          coverage-path: ./coverage.txt
+          coverage-path: ./coverage/coverage.txt
