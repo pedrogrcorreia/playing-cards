@@ -1,6 +1,4 @@
-import { FaceValues } from './FaceValues';
-
 export interface IFace {
-  value: FaceValues;
+  value: number;
   name: string;
 }

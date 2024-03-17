@@ -42,4 +42,10 @@ export class CardsCollection {
   public get remainingCards(): number {
     return this._remainingCards();
   }
+
+  toJSON() {
+    return {
+      cards: this.cards,
+    };
+  }
 }

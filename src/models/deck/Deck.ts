@@ -34,11 +34,8 @@ export class Deck extends CardsCollection {
 
     for (let i = 0; i < suits.length; i++) {
       for (let j = 0; j < faceValues.length; j++) {
-        if (
-          suits.indexOf(SuitValues[i]) != SuitValues.NO_SUIT &&
-          faceValues.indexOf(FaceValues[j]) != FaceValues.JOKER
-        ) {
-          const card = new Card({ suitValue: suits.indexOf(suits[i]), faceValue: faceValues.indexOf(faceValues[j]) });
+        if (suits[i] != SuitValues.NO_SUIT && faceValues[j] != FaceValues.JOKER) {
+          const card = new Card({ suit: suits[i], face: faceValues[j] });
           this._cards.push(card);
         }
       }
@@ -46,11 +43,19 @@ export class Deck extends CardsCollection {
   }
 
   private createJokers() {
-    return Array.from(Array(2), () => new Card({ suitValue: SuitValues.NO_SUIT, faceValue: FaceValues.JOKER }));
+    return Array.from(Array(2), () => new Card({ suit: SuitValues.NO_SUIT, face: FaceValues.JOKER }));
   }
 
   private removeCardsForFortyDeck() {
-    const valuesToRemove = [FaceValues.EIGHT, FaceValues.NINE, FaceValues.TEN];
-    this._cards = this.cards.filter((card) => !valuesToRemove.includes(card.face.value));
+    const valuesToRemove = [FaceValues.EIGHT.name, FaceValues.NINE.name, FaceValues.TEN.name];
+    this._cards = this.cards.filter((card) => !valuesToRemove.includes(card.face.name));
+  }
+
+  toJSON() {
+    return {
+      cards: this.cards,
+      remainingCards: this.remainingCards,
+      isEmpty: this.isEmpty,
+    };
   }
 }
