@@ -8,12 +8,9 @@ export class Card {
   public suit!: Suit;
   public face!: FaceValue;
 
-  constructor({
-    suitValue = SuitValues.CLUBS,
-    faceValue = FaceValues.ACE,
-  }: { suitValue?: SuitValues; faceValue?: FaceValues } = {}) {
-    this.suit = new Suit({ suit: suitValue });
-    this.face = new FaceValue({ faceValue: faceValue });
+  constructor({ suit = SuitValues.CLUBS, face = FaceValues.ACE }: { suit?: SuitValues; face?: FaceValues } = {}) {
+    this.suit = new Suit({ suit: suit });
+    this.face = new FaceValue({ faceValue: face });
   }
 
   public compareValue(card: Card) {
