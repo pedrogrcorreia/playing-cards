@@ -17,8 +17,8 @@ describe('Test Deck', () => {
         expect(deck.remainingCards).toBe(54);
       });
       test('should return jokers as last cards', () => {
-        expect(deck.removeCard()?.face.value).toBe(FaceValues.JOKER);
-        expect(deck.removeCard()?.face.value).toBe(FaceValues.JOKER);
+        expect(deck.removeCard()?.face.name).toBe(FaceValues.JOKER.name);
+        expect(deck.removeCard()?.face.name).toBe(FaceValues.JOKER.name);
       });
     });
     describe('standard', () => {
@@ -27,7 +27,7 @@ describe('Test Deck', () => {
         expect(deck.remainingCards).toBe(52);
       });
       test('should return ace as last card', () => {
-        expect(deck.removeCard()?.face.value).toBe(FaceValues.ACE);
+        expect(deck.removeCard()?.face.name).toBe(FaceValues.ACE.name);
       });
     });
     describe('forty', () => {
@@ -36,7 +36,7 @@ describe('Test Deck', () => {
         expect(deck.remainingCards).toBe(40);
       });
       test('should return ace as last card', () => {
-        expect(deck.removeCard()?.face.value).toBe(FaceValues.ACE);
+        expect(deck.removeCard()?.face.name).toBe(FaceValues.ACE.name);
       });
     });
   });

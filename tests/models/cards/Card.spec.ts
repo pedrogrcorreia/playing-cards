@@ -10,36 +10,35 @@ describe('Test cards', () => {
     test('should return ace of clubs', () => {
       const card = new Card();
       expect(card).not.toBeNull();
-      expect(card.suit.name).toBe('CLUBS');
-      expect(card.face.name).toBe('ACE');
+      expect(card.suit.name).toBe('clubs');
+      expect(card.face.name).toBe('ace');
     });
     describe('Default valued card', () => {
       test('should return jack of clubs', () => {
-        const card = new Card({ faceValue: FaceValues.JACK });
-        expect(card.face.name).toBe('JACK');
-        expect(card.face.value).toBe(FaceValues.JACK);
-        expect(card.suit.name).toBe('CLUBS');
+        const card = new Card({ face: FaceValues.JACK });
+        expect(card.face.name).toBe('jack');
+        expect(card.face.value).toBe(FaceValues.JACK.value);
+        expect(card.suit.name).toBe('clubs');
       });
     });
     describe('Default suited card', () => {
       test('should return ace of diamonds', () => {
-        const card = new Card({ suitValue: SuitValues.DIAMONDS });
-        expect(card.suit.name).toBe('DIAMONDS');
-        expect(card.suit.value).toBe(SuitValues.DIAMONDS);
-        expect(card.face.name).toBe('ACE');
+        const card = new Card({ suit: SuitValues.DIAMONDS });
+        expect(card.suit.name).toBe('diamonds');
+        expect(card.face.name).toBe('ace');
       });
     });
     describe('Suited and valued card', () => {
       test('should return six of hearts', () => {
-        const card = new Card({ suitValue: SuitValues.HEARTS, faceValue: FaceValues.SIX });
-        expect(card.suit.name).toBe('HEARTS');
-        expect(card.face.name).toBe('SIX');
+        const card = new Card({ suit: SuitValues.HEARTS, face: FaceValues.SIX });
+        expect(card.suit.name).toBe('hearts');
+        expect(card.face.name).toBe('six');
       });
     });
   });
   describe('Card comparison', () => {
     const ace = new Card();
-    const king = new Card({ faceValue: FaceValues.KING });
+    const king = new Card({ face: FaceValues.KING });
 
     test('should return higher', () => {
       const result = ace.compareValue(king);

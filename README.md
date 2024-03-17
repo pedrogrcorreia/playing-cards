@@ -3,7 +3,9 @@
 A simple package that enables the creation of playing <br>cards and decks, to help you create card games!
 
 # Features
+# Features
 
+## - Cards
 ## - Cards
 
 - Four suits + 1 no-suit
@@ -33,6 +35,16 @@ A simple package that enables the creation of playing <br>cards and decks, to he
     {
       suit: 'hearts',
       face: 'six',
+      face: FaceValues,
+    }
+  )
+  ```
+  - Optional object constructor with `string`<br>
+  ```
+  new Card(
+    {
+      suit: 'hearts',
+      face: 'six',
     }
   )
   ```
@@ -41,6 +53,7 @@ A simple package that enables the creation of playing <br>cards and decks, to he
 - Compare face values
   - `card.compare(Card)` ⇒ returns `Rank.LOWER, Rank.EQUAL, Rank.HIGHER`
 
+## - Deck and Pile
 ## - Deck and Pile
 
 - Three deck types

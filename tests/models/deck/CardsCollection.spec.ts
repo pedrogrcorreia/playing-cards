@@ -21,21 +21,21 @@ describe('Test CardCollection methods', () => {
   });
   describe('addCardToBegin', () => {
     test('add a card should return 2', () => {
-      expect(cardsCollection.addCardToBegin(new Card({ suitValue: SuitValues.NO_SUIT }))).toBe(2);
+      expect(cardsCollection.addCardToBegin(new Card({ suit: SuitValues.NO_SUIT }))).toBe(2);
     });
     test('add no card should return 2', () => {
       expect(cardsCollection.addCardToBegin()).toBe(2);
     });
     test('first card different than second', () => {
-      expect(cardsCollection.cards[0].suit.value).toBe(SuitValues.NO_SUIT);
+      expect(cardsCollection.cards[0].suit.name).toBe(SuitValues.NO_SUIT);
     });
   });
   describe('removeCard and removeCardFromBegin', () => {
     test('remove a card should return last card', () => {
-      expect(cardsCollection.removeCard()?.suit.value).toBe(SuitValues.CLUBS);
+      expect(cardsCollection.removeCard()?.suit.name).toBe(SuitValues.CLUBS);
     });
     test('remove card from begin should return first card', () => {
-      expect(cardsCollection.removeCardFromBegin()?.suit.value).toBe(SuitValues.NO_SUIT);
+      expect(cardsCollection.removeCardFromBegin()?.suit.name).toBe(SuitValues.NO_SUIT);
     });
     test('remove card on empty should return null', () => {
       expect(cardsCollection.removeCard()).toBeUndefined();

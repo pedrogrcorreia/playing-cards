@@ -6,7 +6,15 @@ export class FaceValue implements IFace {
   public name!: string;
 
   constructor({ faceValue = FaceValues.ACE }: { faceValue?: FaceValues } = {}) {
-    this.value = faceValue;
-    this.name = FaceValues[faceValue];
+    this.value = faceValue.value;
+    this.name = faceValue.name;
+  }
+
+  static availableFaces() {
+    return Object.values(FaceValues);
+  }
+
+  toJSON() {
+    return this.name;
   }
 }
