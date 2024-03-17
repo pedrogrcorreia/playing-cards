@@ -10,6 +10,10 @@ export class FaceValue implements IFace {
     this.name = faceValue.name;
   }
 
+  static availableFaces() {
+    return Object.values(FaceValues);
+  }
+
   toJSON() {
     return this.name;
   }

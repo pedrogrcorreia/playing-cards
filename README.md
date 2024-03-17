@@ -2,25 +2,33 @@
 
 A simple package that enables the creation of playing <br>cards and decks, to help you create card games!
 
-## Install
+# Features
 
-`npm install ts-playing-cards@latest`
-
-## Features
-
-### - Card
+## - Cards
 
 - Four suits + 1 no-suit
-  - `SuitValues.CLUBS`, `SuitValues.SPADES`, `SuitValues.HEARTS` and `SuitValues.DIAMONDS`
-  - Joker have `SuitValues.NO_SUIT`
+  - `SuitValues.CLUBS` or `clubs`
+  - `SuitValues.SPADES` or `spades`
+  - `SuitValues.HEARTS` or `hearts`
+  - `SuitValues.DIAMONDS` or `diamonds`
+  - Joker have `SuitValues.NO_SUIT` (`noSuit`)
 - Create cards
-  - Default constructor 'new Card()` returns ACE of CLUBS.
-  - Optional object constructor <br>
+  - Default constructor 'new Card()`returns`ace`of`clubs`.
+  - Optional object constructor with `SuitValues`<br>
   ```
   new Card(
     {
       suit: SuitValues,
-      faceValue: FaceValues,
+      face: FaceValues,
+    }
+  )
+  ```
+  - Optional object constructor with `string`<br>
+  ```
+  new Card(
+    {
+      suit: 'hearts',
+      face: 'six',
     }
   )
   ```
@@ -29,10 +37,12 @@ A simple package that enables the creation of playing <br>cards and decks, to he
 - Compare face values
   - `card.compare(Card)` ⇒ returns `Rank.LOWER, Rank.EQUAL, Rank.HIGHER`
 
-### - Deck and Pile
+## - Deck and Pile
 
 - Three deck types
-  - `DeckType.STANDARD` (52 cards), `DeckType.STANDARD_JOKERS` (54 cards) and `DeckType.FORTY` (40 cards).
+  - `DeckType.STANDARD` or `standard` (52 cards)
+  - `DeckType.STANDARD_JOKERS` or `standardJokers` (54 cards) and
+  - `DeckType.FORTY` or `forty` (40 cards).
 - Create decks
   - Default constructor `new Deck()` returns a standard 52 cards deck
   - Optional object constructor <br>

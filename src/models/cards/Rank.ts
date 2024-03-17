@@ -1,5 +1,7 @@
-export enum Rank {
-  HIGHER = 'HIGHER',
-  LOWER = 'LOWER',
-  EQUAL = 'EQUAL',
-}
+export const Rank = {
+  HIGHER: 'higher',
+  LOWER: 'lower',
+  EQUAL: 'equal',
+};
+
+export type Rank = (typeof Rank)[keyof typeof Rank];

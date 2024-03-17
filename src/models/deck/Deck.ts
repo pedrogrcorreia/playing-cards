@@ -51,6 +51,10 @@ export class Deck extends CardsCollection {
     this._cards = this.cards.filter((card) => !valuesToRemove.includes(card.face.name));
   }
 
+  static availableDecks() {
+    return Object.values(DeckType);
+  }
+
   toJSON() {
     return {
       cards: this.cards,

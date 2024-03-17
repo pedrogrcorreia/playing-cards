@@ -12,6 +12,10 @@ export class Suit implements ISuits {
     this.isRed = suit == SuitValues.HEARTS || suit == SuitValues.DIAMONDS;
   }
 
+  static availableSuits() {
+    return Object.values(SuitValues);
+  }
+
   toJSON() {
     return this.name;
   }
