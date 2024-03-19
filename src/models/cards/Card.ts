@@ -7,6 +7,7 @@ import { Suit } from './suits/Suits';
 export class Card {
   public suit!: Suit;
   public face!: FaceValue;
+  public isVisible: boolean = false;
 
   constructor({ suit = SuitValues.CLUBS, face = FaceValues.ACE }: { suit?: SuitValues; face?: FaceValues } = {}) {
     this.suit = new Suit({ suit: suit });
